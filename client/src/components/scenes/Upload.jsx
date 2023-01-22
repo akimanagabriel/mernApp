@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import Dropzone from "react-dropzone";
 import { useState } from "react";
 import UploadIcon from "@mui/icons-material/Upload";
@@ -26,9 +33,11 @@ function Upload() {
       .catch((error) => console.log("error", error));
   };
 
+  const isMobile = useMediaQuery("(max-width: 800px)");
+
   return (
     <>
-      <Stack direction={"row"} gap="2em" p={"2em 3em"}>
+      <Stack direction={isMobile ? "column" : "row"} gap="1em" p={"2em 3em"}>
         <Box>
           <Typography variant="h6" color={"primary"}>
             Upload your picture here
